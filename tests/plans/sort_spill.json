@@ -1,0 +1,58 @@
+[
+ {
+  "Plan": {
+   "Node Type": "Sort",
+   "Sort Method": "external merge",
+   "Sort Space Used": 524288,
+   "Sort Space Type": "Disk",
+   "Plan Rows": 2000000,
+   "Actual Rows": 2000000,
+   "Actual Loops": 1,
+   "Actual Total Time": 5200.0,
+   "Plans": [
+    {
+     "Node Type": "Hash Join",
+     "Parent Relationship": "Outer",
+     "Plan Rows": 2000000,
+     "Actual Rows": 2000000,
+     "Actual Loops": 1,
+     "Actual Total Time": 3100.0,
+     "Plans": [
+      {
+       "Node Type": "Seq Scan",
+       "Parent Relationship": "Outer",
+       "Relation Name": "order_lines",
+       "Plan Rows": 2000000,
+       "Actual Rows": 2000000,
+       "Actual Loops": 1,
+       "Actual Total Time": 900.0
+      },
+      {
+       "Node Type": "Hash",
+       "Parent Relationship": "Inner",
+       "Hash Batches": 16,
+       "Peak Memory Usage": 4097,
+       "Plan Rows": 500000,
+       "Actual Rows": 500000,
+       "Actual Loops": 1,
+       "Actual Total Time": 700.0,
+       "Plans": [
+        {
+         "Node Type": "Seq Scan",
+         "Parent Relationship": "Outer",
+         "Relation Name": "products",
+         "Plan Rows": 500000,
+         "Actual Rows": 500000,
+         "Actual Loops": 1,
+         "Actual Total Time": 400.0
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "Planning Time": 0.9,
+  "Execution Time": 5205.0
+ }
+]
