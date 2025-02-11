@@ -1,0 +1,66 @@
+[
+ {
+  "Plan": {
+   "Node Type": "Nested Loop",
+   "Plan Rows": 120,
+   "Actual Rows": 1850000,
+   "Actual Loops": 1,
+   "Actual Total Time": 9800.0,
+   "Plans": [
+    {
+     "Node Type": "Hash Join",
+     "Parent Relationship": "Outer",
+     "Plan Rows": 40,
+     "Actual Rows": 61000,
+     "Actual Loops": 1,
+     "Actual Total Time": 300.0,
+     "Plans": [
+      {
+       "Node Type": "Seq Scan",
+       "Parent Relationship": "Outer",
+       "Relation Name": "orders",
+       "Filter": "(status = 'OPEN'::text)",
+       "Rows Removed by Filter": 2000,
+       "Plan Rows": 50,
+       "Actual Rows": 61000,
+       "Actual Loops": 1,
+       "Actual Total Time": 120.0
+      },
+      {
+       "Node Type": "Hash",
+       "Parent Relationship": "Inner",
+       "Hash Batches": 1,
+       "Plan Rows": 100,
+       "Actual Rows": 100,
+       "Actual Loops": 1,
+       "Actual Total Time": 1.0,
+       "Plans": [
+        {
+         "Node Type": "Seq Scan",
+         "Parent Relationship": "Outer",
+         "Relation Name": "stores",
+         "Plan Rows": 100,
+         "Actual Rows": 100,
+         "Actual Loops": 1,
+         "Actual Total Time": 0.5
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "Node Type": "Index Scan",
+     "Parent Relationship": "Inner",
+     "Relation Name": "order_lines",
+     "Index Name": "order_lines_order_id_idx",
+     "Plan Rows": 3,
+     "Actual Rows": 30,
+     "Actual Loops": 61000,
+     "Actual Total Time": 0.15
+    }
+   ]
+  },
+  "Planning Time": 1.2,
+  "Execution Time": 9801.0
+ }
+]
